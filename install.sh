@@ -7,7 +7,7 @@
 #        |___/|_|                                             
 #  
 # ----------------------------------------------------- 
-# Version 2.1
+# Version 2.2
 # ----------------------------------------------------- 
 
 clear
@@ -80,6 +80,7 @@ packages=(
     "unzip"
     "gum"
     "rsync"
+    "figlet"
 )
 
 echo -e "${GREEN}"
@@ -92,18 +93,18 @@ cat <<"EOF"
        |___/|_|                             
 
 HYPRLAND STARTER
-Version 2.0
+Version 2.2
 EOF
 echo -e "${NONE}"
 
 # Synchronizing package databases
 sudo pacman -Sy
-echo ""
+echo
 
 # Install required packages
 echo ":: Checking that required packages are installed..."
 _installPackagesPacman "${packages[@]}";
-echo ""
+echo
 
 # Double check rsync
 if ! command -v rsync &> /dev/null; then
@@ -112,42 +113,35 @@ if ! command -v rsync &> /dev/null; then
 else
     echo ":: rsync double checked"
 fi
-echo ""
+echo
 
 # Install Yay
 # _installYay
 
 # Confirm Start
 echo -e "${GREEN}"
-cat <<"EOF"
- ___           _        _ _       _   _             
-|_ _|_ __  ___| |_ __ _| | | __ _| |_(_) ___  _ __  
- | || '_ \/ __| __/ _` | | |/ _` | __| |/ _ \| '_ \ 
- | || | | \__ \ || (_| | | | (_| | |_| | (_) | | | |
-|___|_| |_|___/\__\__,_|_|_|\__,_|\__|_|\___/|_| |_|
-                                                    
-EOF
+figlet "Installation"
 echo -e "${NONE}"
 echo "This script will install the core packages of Hyperland:"
-echo "hyprland waybar rofi wofi kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome"
-echo ""
+echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome"
+echo
 echo "IMPORTANT: Backup existing configurations in .config if needed."
 echo "This script doesn't support NVIDIA graphis driver."
 if gum confirm "DO YOU WANT TO START THE INSTALLATION NOW?" ;then
-    echo ""
+    echo
     echo ":: Installing Hyprland and additional packages"
-    echo ""
+    echo
 elif [ $? -eq 130 ]; then
     exit 130
 else
-    echo ""
+    echo
     echo "Installation canceled."
     exit;
 fi
 
 # Install packages 
 # PLEASE NOTE: Add more packages at the end of the following command
-sudo pacman -S vim hyprland waybar rofi-wayland wofi kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
+sudo pacman -S vim hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
 
 # Install yay packages
 # PLEASE NOTE: Add more packages at the end of the following command
@@ -156,13 +150,13 @@ sudo pacman -S vim hyprland waybar rofi-wayland wofi kitty alacritty dunst dolph
 # Copy configuration
 if gum confirm "DO YOU WANT TO COPY THE PREPARED dotfiles INTO .config? (YOU CAN ALSO DO THIS MANUALLY)" ;then
     rsync -a -I . ~/.config/
-    echo ""
+    echo
     echo ":: Configuration files successfully copied to ~/.config/"
-    echo ""
+    echo
 elif [ $? -eq 130 ]; then
     exit 130
 else
-    echo ""
+    echo
     echo "Installation canceled."
     echo "PLEASE NOTE: Open ~/.config/hypr/hyprland.conf to change your keyboard layout (default is us) and your screenresolution (default is preferred) if needed."
     echo "Then reboot your system!"
@@ -172,22 +166,14 @@ fi
 if [ -f ~/.config/hypr/hyprland.conf ] ;then
     
     # Setup keyboard layout
-echo -e "${GREEN}"
-cat <<"EOF"
- _  __          _                         _ 
-| |/ /___ _   _| |__   ___   __ _ _ __ __| |
-| ' // _ \ | | | '_ \ / _ \ / _` | '__/ _` |
-| . \  __/ |_| | |_) | (_) | (_| | | | (_| |
-|_|\_\___|\__, |_.__/ \___/ \__,_|_|  \__,_|
-          |___/                             
-
-EOF
-echo -e "${NONE}"
+    echo -e "${GREEN}"
+    figlet "Keyboard"
+    echo -e "${NONE}"
     echo "Please select your keyboard layout. Can be changed later in ~/-config/hypr/hyprland.conf"
     echo "Start typing = Search, RETURN = Confirm, CTRL-C = Cancel"
-    echo ""
+    echo
     keyboard_layout=$(localectl list-x11-keymap-layouts | gum filter --height 15 --placeholder "Find your keyboard layout...")
-    echo ""
+    echo
     if [ -z $keyboard_layout ] ;then
         keyboard_layout="us" 
     fi
@@ -195,21 +181,14 @@ echo -e "${NONE}"
     REPLACE="kb_layout = $keyboard_layout"
     sed -i -e "s/$SEARCH/$REPLACE/g" ~/.config/hypr/hyprland.conf
     echo "Keyboard layout changed to $keyboard_layout"
-    echo ""
+    echo
 
     # Set initial screen resolution
-echo -e "${GREEN}"
-cat <<"EOF"
- __  __             _ _             
-|  \/  | ___  _ __ (_) |_ ___  _ __ 
-| |\/| |/ _ \| '_ \| | __/ _ \| '__|
-| |  | | (_) | | | | | || (_) | |   
-|_|  |_|\___/|_| |_|_|\__\___/|_|   
-                                    
-EOF
-echo -e "${NONE}"
+    echo -e "${GREEN}"
+    figlet "Monitor"
+    echo -e "${NONE}"
     echo "Please select your initial screen resolution. Can be changed later in ~/-config/hypr/hyprland.conf"
-    echo ""
+    echo
     screenres=$(gum choose --height 15 "1024x768" "1280x720" "1280x800" "1440x900" "1280x1024" "1680x1050" "1280x1440" "1600x1200" "1920x1080" "1920x1200" "2560x1440")
     SEARCH="monitor=,preferred,auto,auto"
     REPLACE="monitor=,$screenres,auto,1"
@@ -218,16 +197,9 @@ echo -e "${NONE}"
 
     # Set KVM environment variables
     if [ $(_isKVM) == "0" ] ;then
-echo -e "${GREEN}"
-cat <<"EOF"
- _  ____     ____  __  __     ____  __ 
-| |/ /\ \   / /  \/  | \ \   / /  \/  |
-| ' /  \ \ / /| |\/| |  \ \ / /| |\/| |
-| . \   \ V / | |  | |   \ V / | |  | |
-|_|\_\   \_/  |_|  |_|    \_/  |_|  |_|
-                                       
-EOF
-echo -e "${NONE}"
+        echo -e "${GREEN}"
+        figlet "KVM VM"
+        echo -e "${NONE}"
         if gum confirm "Are you running this script in a KVM virtual machine?" ;then
             SEARCH="# env = WLR_NO_HARDWARE_CURSORS"
             REPLACE="env = WLR_NO_HARDWARE_CURSORS"
@@ -243,14 +215,7 @@ echo -e "${NONE}"
 fi
 
 echo -e "${GREEN}"
-cat <<"EOF"
- ____                   
-|  _ \  ___  _ __   ___ 
-| | | |/ _ \| '_ \ / _ \
-| |_| | (_) | | | |  __/
-|____/ \___/|_| |_|\___|
-                        
-EOF
+figlet "Done"
 echo -e "${NONE}"
 
 echo "Open ~/.config/hypr/hyprland.conf to check your new initial Hyprland configuration."

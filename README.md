@@ -44,6 +44,14 @@ sudo pacman -S hyprland waybar rofi wofi kitty alacritty dunst dolphin xdg-deskt
 
 ## Installation
 
+Just copy/enter the following command into your terminal.
+
+```
+bash <(curl -s "https://gitlab.com/stephan-raabe/hyprland-starter/-/raw/main/setup.sh") ~/Downloads
+```
+
+Or you clone the repository manually with these commands:
+
 ```
 # git is required
 sudo pacman -S git
