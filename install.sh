@@ -133,7 +133,7 @@ echo -e "${GREEN}"
 figlet "Installation"
 echo -e "${NONE}"
 echo "This script will install the core packages of Hyperland:"
-echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome wlogout"
+echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim"
 echo
 echo "IMPORTANT: Backup existing configurations in .config if needed."
 echo "This script doesn't support NVIDIA graphis driver."
@@ -154,7 +154,7 @@ fi
 # ----------------------------------------------------- 
 
 # PLEASE NOTE: Add more packages at the end of the following command
-sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome wlogout vim
+sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim
 
 # Install yay packages
 # PLEASE NOTE: Add more packages at the end of the following command
