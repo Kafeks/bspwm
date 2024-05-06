@@ -46,8 +46,8 @@ fi
 cd ~/Downloads
 
 # Remove existing folder
-if [ -d ~/dotfiles/hyprland-starter ] ;then
-    rm -rf ~/dotfiles/hyprland-starter
+if [ -d ~/Downloads/hyprland-starter ] ;then
+    rm -rf ~/Downloads/hyprland-starter
     echo ":: Existing installation folder removed"
 fi
 
