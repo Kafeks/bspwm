@@ -1,4 +1,4 @@
-# Hyprland Starter 2.1
+# Hyprland Starter 2.5
 
 To make your start with Hyprland easy, you can find here a basic installation and configuration script.
 The default configuration files are already available in the corresponding folder.
@@ -6,48 +6,16 @@ It's a perfect starting point for your customization experiments.
 
 ## Requirements
 
-This script requires an Arch Linux based distribution. Tested on Manjaro, EndeavourOS, Arco Linux and Arch Linux.
+This script requires an Arch Linux based distribution. Tested on Arch Linux, EndeavourOS, Arco Linux and Manjaro.
 
 NVIDIA installation for Hyprland is not covered in this script. Please read: https://wiki.hyprland.org/Nvidia/
-
-## Packages
-
-The script will install the following packages:
-
-- Window Manager: hyprland 
-- Status Bar: waybar 
-- Launcher: rofi 
-- Launcher: wofi #optional
-- Terminal: kitty #optional
-- Terminal: alacritty 
-- Notification Service: dunst 
-- File Manager: dolphin 
-- xdg-desktop-portal-hyprland 
-- qt5-wayland 
-- qt6-wayland 
-- Wallpaper: hyprpaper
-- Icons: ttf-font-awesome
-
-Optionally, you can activate the installation of yay to get access to the AUR.
-
-You can customize the script by adding more packages to the installation commands.
-
-```
-# Install packages 
-# PLEASE NOTE: Add more packages at the end of the following command
-sudo pacman -S hyprland waybar rofi wofi kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
-
-# Install yay packages
-# PLEASE NOTE: Add more packages at the end of the following command
-# yay -S pfetch
-```
 
 ## Installation
 
 Just copy/enter the following command into your terminal.
 
 ```
-bash <(curl -s "https://gitlab.com/stephan-raabe/hyprland-starter/-/raw/main/setup.sh") ~/Downloads
+bash <(curl -s "https://gitlab.com/stephan-raabe/hyprland-starter/-/raw/main/setup.sh")
 ```
 
 Or you clone the repository manually with these commands:
@@ -69,6 +37,39 @@ cd hyprland-starter
 
 # Start the script
 ./install.sh
+```
+
+## Packages
+
+The script will install the following packages:
+
+- Window Manager: hyprland 
+- Status Bar: waybar 
+- Launcher: rofi-wayland 
+- Terminal: alacritty 
+- Terminal: kitty #optional
+- Notification Service: dunst 
+- File Manager: dolphin 
+- xdg-desktop-portal-hyprland 
+- qt5-wayland 
+- qt6-wayland 
+- Wallpaper: hyprpaper
+- Lock screen: hyprlock
+- Power menu: wlogout
+- Icons: ttf-font-awesome
+
+Optionally, you can activate the installation of yay to get access to the AUR.
+
+You can customize the script by adding more packages to the installation commands.
+
+```
+# Install packages 
+# PLEASE NOTE: Add more packages at the end of the following command
+sudo pacman -S hyprland waybar rofi-wayland wofi kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
+
+# Install yay packages
+# PLEASE NOTE: Add more packages at the end of the following command
+# yay -S pfetch
 ```
 
 ## Key Bindings

@@ -7,14 +7,16 @@
 #        |___/|_|                                             
 #  
 # ----------------------------------------------------- 
-# Version 2.2
+# Version 2.5
 # ----------------------------------------------------- 
 
 clear
-
-# Some colors
 GREEN='\033[0;32m'
 NONE='\033[0m'
+
+# ----------------------------------------------------- 
+# Functions
+# ----------------------------------------------------- 
 
 # Check if package is installed
 _isInstalledPacman() {
@@ -75,7 +77,7 @@ _installYay() {
 }
 
 # Required packages for the installer
-packages=(
+installer_packages=(
     "wget"
     "unzip"
     "gum"
@@ -93,20 +95,26 @@ cat <<"EOF"
        |___/|_|                             
 
 HYPRLAND STARTER
-Version 2.2
+Version 2.5
 EOF
 echo -e "${NONE}"
 
+# ----------------------------------------------------- 
 # Synchronizing package databases
+# ----------------------------------------------------- 
 sudo pacman -Sy
 echo
 
+# ----------------------------------------------------- 
 # Install required packages
+# ----------------------------------------------------- 
 echo ":: Checking that required packages are installed..."
-_installPackagesPacman "${packages[@]}";
+_installPackagesPacman "${installer_packages[@]}";
 echo
 
+# ----------------------------------------------------- 
 # Double check rsync
+# ----------------------------------------------------- 
 if ! command -v rsync &> /dev/null; then
     echo ":: Force rsync installation"
     sudo pacman -S rsync --noconfirm
@@ -118,12 +126,14 @@ echo
 # Install Yay
 # _installYay
 
+# ----------------------------------------------------- 
 # Confirm Start
+# ----------------------------------------------------- 
 echo -e "${GREEN}"
 figlet "Installation"
 echo -e "${NONE}"
 echo "This script will install the core packages of Hyperland:"
-echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome"
+echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome wlogout"
 echo
 echo "IMPORTANT: Backup existing configurations in .config if needed."
 echo "This script doesn't support NVIDIA graphis driver."
@@ -139,9 +149,12 @@ else
     exit;
 fi
 
+# ----------------------------------------------------- 
 # Install packages 
+# ----------------------------------------------------- 
+
 # PLEASE NOTE: Add more packages at the end of the following command
-sudo pacman -S vim hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
+sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome wlogout vim
 
 # Install yay packages
 # PLEASE NOTE: Add more packages at the end of the following command
@@ -180,7 +193,7 @@ if [ -f ~/.config/hypr/hyprland.conf ] ;then
     SEARCH="kb_layout = us"
     REPLACE="kb_layout = $keyboard_layout"
     sed -i -e "s/$SEARCH/$REPLACE/g" ~/.config/hypr/hyprland.conf
-    echo "Keyboard layout changed to $keyboard_layout"
+    echo ":: Keyboard layout changed to $keyboard_layout"
     echo
 
     # Set initial screen resolution
@@ -193,7 +206,7 @@ if [ -f ~/.config/hypr/hyprland.conf ] ;then
     SEARCH="monitor=,preferred,auto,auto"
     REPLACE="monitor=,$screenres,auto,1"
     sed -i -e "s/$SEARCH/$REPLACE/g" ~/.config/hypr/hyprland.conf    
-    echo "Initial screen resolution set to $screenres"
+    echo ":: Initial screen resolution set to $screenres"
 
     # Set KVM environment variables
     if [ $(_isKVM) == "0" ] ;then
@@ -209,7 +222,7 @@ if [ -f ~/.config/hypr/hyprland.conf ] ;then
             REPLACE="env = WLR_RENDERER_ALLOW_SOFTWARE"
             sed -i -e "s/$SEARCH/$REPLACE/g" ~/.config/hypr/hyprland.conf
 
-            echo "Environment cursor settings set to KVM."
+            echo ":: Environment cursor settings set to KVM."
         fi
     fi
 fi
