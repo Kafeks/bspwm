@@ -55,7 +55,6 @@ The script will install the following packages:
 - qt6-wayland 
 - Wallpaper: hyprpaper
 - Lock screen: hyprlock
-- Power menu: wlogout
 - Icons: ttf-font-awesome
 
 Optionally, you can activate the installation of yay to get access to the AUR.
