@@ -1,4 +1,4 @@
-# Hyprland Starter 2.5
+# ML4W Hyprland Starter 2.5
 
 To make your start with Hyprland easy, you can find here a basic installation and configuration script.
 The default configuration files are already available in the corresponding folder.
@@ -6,9 +6,10 @@ It's a perfect starting point for your customization experiments.
 
 ## Requirements
 
-This script requires an Arch Linux based distribution. Tested on Arch Linux, EndeavourOS, Arco Linux and Manjaro.
+This script requires an Arch Linux based distribution. Tested on Arch Linux, EndeavourOS, Arco Linux and more. 
+For Manjaro: It's possible that the installation can fail if required packages are not (yet) available. Please try to a later time of view.
 
-NVIDIA installation for Hyprland is not covered in this script. Please read: https://wiki.hyprland.org/Nvidia/
+Hyprland does not officially support NVIDIA hardware. But many users have reported a successful installation. Please read: https://wiki.hyprland.org/Nvidia/
 
 ## Installation
 
@@ -59,18 +60,6 @@ The script will install the following packages:
 
 Optionally, you can activate the installation of yay to get access to the AUR.
 
-You can customize the script by adding more packages to the installation commands.
-
-```
-# Install packages 
-# PLEASE NOTE: Add more packages at the end of the following command
-sudo pacman -S hyprland waybar rofi-wayland wofi kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
-
-# Install yay packages
-# PLEASE NOTE: Add more packages at the end of the following command
-# yay -S pfetch
-```
-
 ## Key Bindings
 
 The following custom key bindings are enabled (can be customized in ~/.config/hypr/hyprland.conf)
@@ -86,3 +75,16 @@ The following custom key bindings are enabled (can be customized in ~/.config/hy
 - <kbd>SUPER</kbd> + <kbd>1-9</kbd> to switch workspaces
 - more key bindings in ~/.config/hypr/hyprland.conf
 
+## Create our own installer script
+
+You can customize the script by adding more packages to the installation commands.
+
+```
+# Install packages 
+# PLEASE NOTE: Add more packages at the end of the following command
+sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper chromium ttf-font-awesome
+
+# Install yay packages
+# PLEASE NOTE: Add more packages at the end of the following command
+# yay -S pfetch
+```
