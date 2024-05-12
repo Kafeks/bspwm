@@ -94,7 +94,7 @@ cat <<"EOF"
 |_| |_|\__, | .__/|_|  |_|\__,_|_| |_|\__,_|
        |___/|_|                             
 
-HYPRLAND STARTER
+ML4W HYPRLAND STARTER PACKAGE
 Version 2.5
 EOF
 echo -e "${NONE}"
@@ -132,11 +132,11 @@ echo
 echo -e "${GREEN}"
 figlet "Installation"
 echo -e "${NONE}"
-echo "This script will install the core packages of Hyperland:"
+echo "This script will install the core packages for a Hyperland base configuration:"
 echo "hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim"
 echo
 echo "IMPORTANT: Backup existing configurations in .config if needed."
-echo "This script doesn't support NVIDIA graphis driver."
+echo "This script doesn't officially support NVIDIA GPU. But you can give it a try..."
 if gum confirm "DO YOU WANT TO START THE INSTALLATION NOW?" ;then
     echo
     echo ":: Installing Hyprland and additional packages"
@@ -145,7 +145,7 @@ elif [ $? -eq 130 ]; then
     exit 130
 else
     echo
-    echo "Installation canceled."
+    echo ":: Installation canceled."
     exit;
 fi
 
@@ -170,7 +170,7 @@ elif [ $? -eq 130 ]; then
     exit 130
 else
     echo
-    echo "Installation canceled."
+    echo ":: Installation canceled."
     echo "PLEASE NOTE: Open ~/.config/hypr/hyprland.conf to change your keyboard layout (default is us) and your screenresolution (default is preferred) if needed."
     echo "Then reboot your system!"
     exit;
@@ -222,7 +222,7 @@ if [ -f ~/.config/hypr/hyprland.conf ] ;then
             REPLACE="env = WLR_RENDERER_ALLOW_SOFTWARE"
             sed -i -e "s/$SEARCH/$REPLACE/g" ~/.config/hypr/hyprland.conf
 
-            echo ":: Environment cursor settings set to KVM."
+            echo ":: Environment settings set for KVM cursor support."
         fi
     fi
 fi
@@ -232,5 +232,5 @@ figlet "Done"
 echo -e "${NONE}"
 
 echo "Open ~/.config/hypr/hyprland.conf to check your new initial Hyprland configuration."
-echo ""
-echo "Please reboot your system!"
+echo
+echo "DONE! Please reboot your system!"
