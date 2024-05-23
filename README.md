@@ -6,8 +6,7 @@ The ML4W Hyprland Starter package is the perfect starting point for your Hyprlan
 
 ## Requirements
 
-This script requires an Arch Linux based distribution. Tested on Arch Linux, EndeavourOS, Garuda Linux, Arco Linux and more. 
-For Manjaro: It's possible that the installation can fail if required packages are not (yet) available. Please try to a later time of view.
+This script requires an Arch Linux based distribution. Tested on Arch Linux, EndeavourOS, Manjaro Linux, Garuda Linux, Arco Linux and more. 
 
 Hyprland does not officially support NVIDIA hardware. But many users have reported a successful installation. Please read: https://wiki.hyprland.org/Nvidia/
 
