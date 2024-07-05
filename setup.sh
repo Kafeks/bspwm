@@ -29,6 +29,13 @@ _installPackagesPacman() {
     sudo pacman --noconfirm -S "${toInstall[@]}";
 }
 
+# Required packages for the installer
+installer_packages=(
+    "gum"
+    "figlet"
+    "git"
+)
+
 clear
 
 # Some colors
@@ -67,6 +74,9 @@ while true; do
     esac
 done
 
+# Install required packages
+_installPackagesPacman "${installer_packages[@]}";
+
 if [ ! -d ~/Downloads ] ;then
     mkdir ~/Downloads
     echo ":: Downloads folder created"
@@ -80,9 +90,6 @@ if [ -d ~/Downloads/hyprland-starter ] ;then
     rm -rf ~/Downloads/hyprland-starter
     echo ":: Existing installation folder removed"
 fi
-
-# Check if git is installed
-_installPackagesPacman "git";
 
 # Clone the packages
 git clone --depth 1 https://gitlab.com/stephan-raabe/hyprland-starter.git
