@@ -17,7 +17,7 @@ You can install the Hyprland Starter on real hardware (bare metal) or test it fi
 Just copy/enter the following command into your terminal.
 
 ```
-bash <(curl -s "https://gitlab.com/stephan-raabe/hyprland-starter/-/raw/main/setup.sh")
+bash <(curl -s https://gitlab.com/stephan-raabe/hyprland-starter/-/raw/main/setup.sh)
 ```
 
 Or you clone the repository and start the installation with these commands:
@@ -55,7 +55,7 @@ The script will install the following packages:
 - xdg-desktop-portal-hyprland 
 - qt5-wayland 
 - qt6-wayland 
-- Wallpaper: hyprpaper and waypaper (to select a wallpaper)
+- Wallpaper: waypaper (to select a wallpaper) and hyprpaper
 - Lock screen: hyprlock
 - Icons: ttf-font-awesome
 
@@ -87,5 +87,5 @@ sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-de
 
 # Install yay packages
 # PLEASE NOTE: Add more packages at the end of the following command
-# yay -S pfetch
+yay -S waypaper
 ```
