@@ -83,6 +83,7 @@ installer_packages=(
     "gum"
     "rsync"
     "figlet"
+    "git"
 )
 
 echo -e "${GREEN}"
@@ -95,7 +96,7 @@ cat <<"EOF"
        |___/|_|                             
 
 ML4W HYPRLAND STARTER PACKAGE
-Version 2.5
+Version 2.6
 EOF
 echo -e "${NONE}"
 
@@ -124,7 +125,7 @@ fi
 echo
 
 # Install Yay
-# _installYay
+_installYay
 
 # ----------------------------------------------------- 
 # Confirm Start
@@ -156,9 +157,8 @@ fi
 # PLEASE NOTE: Add more packages at the end of the following command
 sudo pacman -S hyprland waybar rofi-wayland kitty alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock chromium ttf-font-awesome vim
 
-# Install yay packages
 # PLEASE NOTE: Add more packages at the end of the following command
-# yay -S pfetch
+yay -S waypaper
 
 # Copy configuration
 if gum confirm "DO YOU WANT TO COPY THE PREPARED dotfiles INTO .config? (YOU CAN ALSO DO THIS MANUALLY)" ;then

@@ -1,4 +1,4 @@
-# ML4W Hyprland Starter 2.5
+# ML4W Hyprland Starter 2.6
 
 To make your start with Hyprland easy, you can find here a basic installation and configuration script.
 The default configuration files are already available in the corresponding folder.
@@ -55,7 +55,7 @@ The script will install the following packages:
 - xdg-desktop-portal-hyprland 
 - qt5-wayland 
 - qt6-wayland 
-- Wallpaper: hyprpaper
+- Wallpaper: hyprpaper and waypaper (to select a wallpaper)
 - Lock screen: hyprlock
 - Icons: ttf-font-awesome
 
