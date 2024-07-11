@@ -1,4 +1,9 @@
-# ML4W Hyprland Starter 2.6
+> IMPORTANT: The project has completely moved to GitHub. Please click on the following link to visit the new repository.
+https://github.com/mylinuxforwork/hyprland-starter
+
+# ML4W Hyprland Starter LEGACY
+
+> This repository is not maintained anymore. It includes the first version of the Hyprland Starter Package for Arch based distros. Please click on the following link to visit the new repository. https://github.com/mylinuxforwork/hyprland-starter
 
 To make your start with Hyprland easy, you can find here a basic installation and configuration script.
 The default configuration files are already available in the corresponding folder.
