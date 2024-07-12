@@ -1,3 +1,5 @@
+<h1 style="color: red;">PLEASE NOTE: THE PROJECT HAS BEEN MIGRATED TO GITHUB</h1>
+
 > IMPORTANT: The project has completely moved to GitHub. Please click on the following link to visit the new repository.
 https://github.com/mylinuxforwork/hyprland-starter
 
