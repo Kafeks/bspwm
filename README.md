@@ -1,7 +1,8 @@
-<h1 style="color: red;">PLEASE NOTE: THE PROJECT HAS BEEN MIGRATED TO GITHUB</h1>
+# IMPORTANT: THE PROJECT HAS BEEN MIGRATED TO GITHUB
 
-> IMPORTANT: The project has completely moved to GitHub. Please click on the following link to visit the new repository.
-https://github.com/mylinuxforwork/hyprland-starter
+> The project has completely moved to GitHub. Please click on the following link to visit the new repository.
+
+**https://github.com/mylinuxforwork/hyprland-starter**
 
 # ML4W Hyprland Starter LEGACY
 
