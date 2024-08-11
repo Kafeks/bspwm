@@ -30,9 +30,16 @@ super + escape + r
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
+
 #restart polybar
 super + alt + p
 	sh /home/kafeks/.config/scripts/restartpoly.sh
+
+super + shift + p
+	pkill polybar
+
+super + shift + r
+	polybar	
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
@@ -132,8 +139,11 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #PowerMenu
-super + l
+super + alt + l
 	sh /home/kafeks/.config/scripts/powermenu.sh
+
+super + alt + s
+	rofi -show drun
 
 # Change language
 Alt_L + shift
